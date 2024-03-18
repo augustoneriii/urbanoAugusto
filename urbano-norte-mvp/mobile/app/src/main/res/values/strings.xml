@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UrbanMobile</string>
+        <string name="login">Login</string>
+        <string name="username">Username</string>
+        <string name="password">Password</string>
+        <string name="logo">Logo Description</string> <!-- Accessibility (content description for the logo) -->
+</resources>

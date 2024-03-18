@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Icon -->
+    <ImageView
+        android:id="@+id/ivUserIcon"
+        android:layout_width="63dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- User Name -->
+
+    <!-- User Email -->
+
+    <!-- User Photo -->
+
+    <!-- Full-Screen Attention Button -->
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:text="Douglas"
+        app:layout_constraintBottom_toTopOf="@+id/tvUserEmail"
+        app:layout_constraintEnd_toStartOf="@+id/ivUserPhoto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvUserEmail"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="52dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="douglas@gmail.com"
+        app:layout_constraintBottom_toTopOf="@+id/tvFullScreenAttention"
+        app:layout_constraintEnd_toStartOf="@id/ivUserPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
+    <ImageView
+        android:id="@+id/ivUserPhoto"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="92dp"
+        android:src="@drawable/ic_perfil"
+        app:layout_constraintBottom_toBottomOf="@id/ivUserIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056" />
+
+
+    <!-- Advertisement ViewPager2 -->
+    <!-- Advertisement ViewPager2 -->
+    <TextView
+        android:id="@+id/tvFullScreenAttention"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_maximize"
+        android:drawablePadding="8dp"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="ATENÇÃO Toque no Banner para entrar em modo de tela cheia"
+        android:textAllCaps="false"
+        android:textColor="#676767"
+        app:layout_constraintBottom_toTopOf="@+id/viewPagerAds"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivUserIcon" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerAds"
+        android:layout_width="1195dp"
+        android:layout_height="585dp"
+        android:background="@drawable/rounded_corner_background"
+        app:layout_constraintBottom_toTopOf="@id/tvAdName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFullScreenAttention" /> <!-- Alterado para o TextView abaixo -->
+
+    <!-- Advertisement Name and Date -->
+    <TextView
+        android:id="@+id/tvAdName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="MC DONALDS - 20/02/2024"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/tvBatteryWarning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPagerAds" /> <!-- Alterado para a ViewPager2 acima -->
+
+    <TextView
+        android:id="@+id/tvBatteryWarning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:drawableStart="@drawable/ic_battery_alert"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Nível de bateria crítico, conecte um carregador."
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/btnPrevAd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_previous"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Next Ad Button -->
+    <ImageButton
+        android:id="@+id/btnNextAd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_next"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Share Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnShare"
+        android:layout_width="216dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="45dp"
+        android:background="#009B54"
+        android:drawableLeft="@drawable/ic_share"
+        android:text="Compartilhar"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFullScreenAttention"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

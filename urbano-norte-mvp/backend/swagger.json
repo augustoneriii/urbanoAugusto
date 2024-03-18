@@ -1,0 +1,1405 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API",
+        "description": "descrição",
+        "contact": {
+            "email": "augustodeo.neri@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5000",
+            "description": "Api de teste"
+        }
+    ],
+    "paths": {
+        "/users/register": {
+            "post": {
+                "summary": "Cadastro de usuários",
+                "description": "Rota para cadastrar um novo usuário",
+                "tags": [
+                    "Users"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "summary": "Login de usuários",
+                "description": "Rota para login de usuários",
+                "tags": [
+                    "Users"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "email": "exemplo@email",
+                                        "password": "senhasecreta"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/checkuser": {
+            "get": {
+                "summary": "Verificar usuário",
+                "description": "Rota para verificar o usuário",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "summary": "Obter usuário por ID",
+                "description": "Rota para obter um usuário pelo ID",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário a ser obtido",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/edit/{id}": {
+            "patch": {
+                "summary": "Editar usuário por ID",
+                "description": "Rota para editar um usuário pelo ID",
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário a ser editado",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anuncio/create": {
+            "post": {
+                "summary": "Criar anúncio",
+                "description": "Rota para criar um novo anúncio",
+                "tags": [
+                    "Anuncio"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Anuncio"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Anuncio"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anuncio/": {
+            "get": {
+                "summary": "Obter todos os anúncios",
+                "description": "Rota para obter todos os anúncios",
+                "tags": [
+                    "Anuncio"
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Anuncio"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anuncio/myads": {
+            "get": {
+                "summary": "Obter todos os anúncios do usuário",
+                "description": "Rota para obter todos os anúncios de um usuário",
+                "tags": [
+                    "Anuncio"
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Anuncio"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anuncio/getbyid/{id}": {
+            "get": {
+                "summary": "Obter anúncio por ID",
+                "description": "Rota para obter um anúncio pelo ID",
+                "tags": [
+                    "Anuncio"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do anúncio a ser obtido",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Anuncio"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anuncio/delete/{id}": {
+            "delete": {
+                "summary": "Remover anúncio por ID",
+                "description": "Rota para remover um anúncio pelo ID",
+                "tags": [
+                    "Anuncio"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do anúncio a ser removido",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Anuncio"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/anuncio/{id}": {
+            "patch": {
+                "summary": "Editar anúncio por ID",
+                "description": "Rota para editar um anúncio pelo ID",
+                "tags": [
+                    "Anuncio"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do anúncio a ser editado",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Anuncio"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no Servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Anuncio"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company/create": {
+            "post": {
+                "summary": "Criar empresa",
+                "description": "Rota para criar uma nova empresa",
+                "tags": [
+                    "Company"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Company"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Dados inválidos"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "201": {
+                        "description": "Empresa criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company/": {
+            "get": {
+                "summary": "Obter todas as empresas",
+                "description": "Rota para obter todas as empresas",
+                "tags": [
+                    "Company"
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Company"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company/{id}": {
+            "get": {
+                "summary": "Obter empresa por ID",
+                "description": "Rota para obter uma empresa pelo ID",
+                "tags": [
+                    "Company"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da empresa a ser obtida",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Empresa não encontrada"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company/getbyname/{name}": {
+            "get": {
+                "summary": "Obter empresa por nome",
+                "description": "Rota para obter uma empresa pelo nome",
+                "tags": [
+                    "Company"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Nome da empresa a ser obtida",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Empresa não encontrada"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company/update/{id}": {
+            "patch": {
+                "summary": "Editar empresa por ID",
+                "description": "Rota para editar uma empresa pelo ID",
+                "tags": [
+                    "Company"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da empresa a ser editada",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Company"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Empresa não encontrada"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/company/delete/{id}": {
+            "delete": {
+                "summary": "Remover empresa por ID",
+                "description": "Rota para remover uma empresa pelo ID",
+                "tags": [
+                    "Company"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da empresa a ser removida",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Empresa não encontrada"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pacote/": {
+            "get": {
+                "summary": "Obter todos os pacotes",
+                "description": "Rota para obter todos os pacotes",
+                "tags": [
+                    "Pacotes"
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Pacotes não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Pacotes"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pacote/{id}": {
+            "get": {
+                "summary": "Obter pacote por ID",
+                "description": "Rota para obter um pacote pelo ID",
+                "tags": [
+                    "Pacotes"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do pacote a ser obtido",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Pacote não encontrado"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Pacotes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pacote/update/{id}": {
+            "patch": {
+                "summary": "Editar pacote por ID",
+                "description": "Rota para editar um pacote pelo ID",
+                "tags": [
+                    "Pacotes"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do pacote a ser editado",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Pacotes"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Pacote não encontrado"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/pacote/delete/{id}": {
+            "delete": {
+                "summary": "Remover pacote por ID",
+                "description": "Rota para remover um pacote pelo ID",
+                "tags": [
+                    "Pacotes"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do pacote a ser removido",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Pacote não encontrado"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/pacote/create": {
+            "post": {
+                "summary": "Criar pacote",
+                "description": "Rota para criar um novo pacote",
+                "tags": [
+                    "Pacotes"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Pacotes"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "201": {
+                        "description": "Criado"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    }
+                }
+            }
+        },
+        "/pacote/getbyname/{name}": {
+            "get": {
+                "summary": "Obter pacote por nome",
+                "description": "Rota para obter um pacote pelo nome",
+                "tags": [
+                    "Pacotes"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Nome do pacote a ser obtido",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "422": {
+                        "description": "Erro ao executar operação"
+                    },
+                    "404": {
+                        "description": "Pacote não encontrado"
+                    },
+                    "500": {
+                        "description": "Erro no servidor"
+                    },
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/dadosanuncio/create": {
+            "post": {
+                "summary": "Criar dados de anúncio",
+                "description": "Rota para criar um novo registro de dados de anúncio",
+                "tags": [
+                    "DadosAnuncio"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DadosAnuncio"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Dados de anúncio criados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DadosAnuncio"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação ou dados não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        },
+        "/dadosanuncio/": {
+            "get": {
+                "summary": "Obter todos os dados de anúncio",
+                "description": "Rota para obter todos os registros de dados de anúncio",
+                "tags": [
+                    "DadosAnuncio"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de todos os dados de anúncio",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DadosAnuncio"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        },
+        "/dadosanuncio/{id}": {
+            "get": {
+                "summary": "Obter dados de anúncio por ID",
+                "description": "Rota para obter um registro de dados de anúncio pelo ID",
+                "tags": [
+                    "DadosAnuncio"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID dos dados de anúncio a ser obtido",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dados de anúncio obtidos com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DadosAnuncio"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Dados de anúncio não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        },
+        "/dadosanuncio/update/{id}": {
+            "patch": {
+                "summary": "Atualizar dados de anúncio por ID",
+                "description": "Rota para atualizar um registro de dados de anúncio pelo ID",
+                "tags": [
+                    "DadosAnuncio"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID dos dados de anúncio a ser atualizado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DadosAnuncio"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Dados de anúncio atualizados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DadosAnuncio"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Dados de anúncio não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        },
+        "/dadosanuncio/delete/{id}": {
+            "delete": {
+                "summary": "Deletar dados de anúncio por ID",
+                "description": "Rota para deletar um registro de dados de anúncio pelo ID",
+                "tags": [
+                    "DadosAnuncio"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID dos dados de anúncio a ser deletado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dados de anúncio deletados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DadosAnuncio"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Dados de anúncio não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        },
+        "/dadosanuncio/incrementview/{id}": {
+            "patch": {
+                "summary": "Atualizar dados de anúncio por ID",
+                "description": "Rota para atualizar um registro de dados de anúncio pelo ID",
+                "tags": [
+                    "DadosAnuncio"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID dos dados de anúncio a ser atualizado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "incrementView": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "datetime": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                },
+                                                "latitude": {
+                                                    "type": "string"
+                                                },
+                                                "longitude": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "email": {
+                                                            "type": "string"
+                                                        },
+                                                        "phone": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "required": ["datetime", "latitude", "longitude", "user"]
+                                        }
+                                    }
+                                },
+                                "required": ["incrementView"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Dados de anúncio atualizados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DadosAnuncio"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Dados de anúncio não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            }
+        }
+        
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "confirmpassword": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Anuncio": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "uri"
+                        }
+                    },
+                    "available": {
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "company": {
+                        "type": "string"
+                    },
+                    "pacote": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "_id": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "_id"
+                            ]
+                        }
+                    }
+                }
+            },
+            "Company": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "representative": {
+                        "type": "string"
+                    },
+                    "cnpj": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "object",
+                        "properties": {
+                            "rua": {
+                                "type": "string"
+                            },
+                            "bairro": {
+                                "type": "string"
+                            },
+                            "cep": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "rua",
+                            "bairro",
+                            "cep"
+                        ]
+                    },
+                    "pacotes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "available": {
+                                    "type": "boolean"
+                                },
+                                "addTime": {
+                                    "type": "number"
+                                },
+                                "dataValidade": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "name",
+                    "representative",
+                    "cnpj",
+                    "email",
+                    "phone",
+                    "address",
+                    "pacotes"
+                ]
+            },
+            "Pacotes": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "addTime": {
+                        "type": "number"
+                    },
+                    "available": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "DadosAnuncio": {
+                "type": "object",
+                "properties": {
+                    "tempoExibicao": {
+                        "type": "number",
+                        "description": "Tempo de exibição do anúncio em segundos"
+                    },
+                    "quantidadeExibicoes": {
+                        "type": "number",
+                        "description": "Quantidade de exibições do anúncio"
+                    },
+                    "anuncioId": {
+                        "type": "string",
+                        "description": "ID do anúncio associado"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "description": "ID da empresa associada"
+                    },
+                    "pacoteId": {
+                        "type": "string",
+                        "description": "ID do pacote associado"
+                    },
+                    "incrementView": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "datetime": "string",
+                                "latitude": "string",
+                                "longitude": "string",
+                                "user": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": "string",
+                                        "name": "string",
+                                        "email": "string",
+                                        "phone": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "tempoExibicao",
+                        "quantidadeExibicoes",
+                        "anuncioId",
+                        "companyId",
+                        "pacoteId"
+                    ]
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
